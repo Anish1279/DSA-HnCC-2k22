@@ -1,1 +1,24 @@
-CPP/Java
+class Solution {
+public:
+void fillsieve(vector<int>&sieve){   //O(n)
+ int n = sieve.size()-1;   
+ for(int i=2;i<=sqrt(n);i++){
+    for(int j=2*i;j<=n;j+=i){
+        sieve[j]=0;
+    }
+
+ }
+ }
+ int countPrimes(int n) {
+       if(n<=2) return 0;
+       int ct=0;
+       vector<int>sieve(n+1,1); // 1 will mean prime $ 0 means non prime
+       fillsieve(sieve);
+       sieve[0]=0;
+       sieve[1]=0;
+       for(int i=2;i<n;i++){
+        if(sieve[i]==1)ct++;
+       }
+       return ct;
+    }
+};
